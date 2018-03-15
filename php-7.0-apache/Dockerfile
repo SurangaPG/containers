@@ -69,6 +69,10 @@ RUN sed -ri -e 's/128M/256M/' /etc/php/7.0/apache2/php.ini
 ENV PHP_UPLOAD_MAX_FILESIZE 250M
 ENV PHP_POST_MAX_SIZE 250M
 
+# Composer
+ENV COMPOSER_VERSION 1.5.5
+RUN curl -sSL https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/bin
+
 #Clean up 
 RUN apt-get autoclean && apt-get autoremove && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
