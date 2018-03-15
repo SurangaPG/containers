@@ -36,12 +36,14 @@ RUN apt-get install -y --force-yes \
 	php7.0-xml \
 	php7.0-zip \
 	php7.0-opcache \
-    php7.0-ldap \
+   	php7.0-ldap \
 	php-apcu \
 	php-gettext \
 	rsyslog \
 	curl  \
-	wget
+ 	wget \
+ 	git \
+ 	php-apcu
 
 RUN apt-get install -y locales
 RUN rm /etc/timezone && echo $MY_TZ >> /etc/timezone && locale-gen nl_BE.UTF-8 && LC_ALL=nl_BE.UTF-8
