@@ -43,7 +43,8 @@ RUN apt-get install -y --force-yes \
 	curl  \
  	wget \
  	git \
- 	php-apcu
+ 	php-apcu \
+	mysql-client
 
 RUN apt-get install -y locales
 RUN rm /etc/timezone && echo $MY_TZ >> /etc/timezone && locale-gen nl_BE.UTF-8 && LC_ALL=nl_BE.UTF-8
