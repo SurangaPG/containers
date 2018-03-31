@@ -40,7 +40,7 @@ RUN apt-get install -y --force-yes \
     apache2 \
     libapache2-mod-php7.1 \
   	ca-certificates \
-  	apache2 \
+  	net-tools \
  	rsyslog \
  	curl  \
  	wget \
@@ -69,7 +69,8 @@ RUN a2enmod rewrite
 RUN mkdir -p /webdata
 
 # Configure PHP memory settings
-RUN sed -ri -e 's/128M/256M/' /etc/php/7.1/apache2/php.ini
+RUN rm -f /etc/php/7.1/apache2/php.ini
+RUN mv php.ini /etc/php/7.1/apache2/php.ini
 
 # Environment variables to configure php
 ENV PHP_UPLOAD_MAX_FILESIZE 250M
