@@ -36,12 +36,15 @@ RUN apt-get install -y --force-yes \
 	php7.0-xml \
 	php7.0-zip \
 	php7.0-opcache \
-    php7.0-ldap \
+   	php7.0-ldap \
 	php-apcu \
 	php-gettext \
 	rsyslog \
 	curl  \
-	wget
+ 	wget \
+ 	git \
+ 	php-apcu \
+	mysql-client
 
 RUN apt-get install -y locales
 RUN rm /etc/timezone && echo $MY_TZ >> /etc/timezone && locale-gen nl_BE.UTF-8 && LC_ALL=nl_BE.UTF-8
@@ -68,6 +71,10 @@ RUN sed -ri -e 's/128M/256M/' /etc/php/7.0/apache2/php.ini
 # Environment variables to configure php
 ENV PHP_UPLOAD_MAX_FILESIZE 250M
 ENV PHP_POST_MAX_SIZE 250M
+
+# Composer
+ENV COMPOSER_VERSION 1.5.5
+RUN curl -sSL https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/bin
 
 #Clean up 
 RUN apt-get autoclean && apt-get autoremove && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
