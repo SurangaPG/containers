@@ -68,9 +68,13 @@ RUN a2enmod rewrite
 # Configure /webdata folder 
 RUN mkdir -p /webdata
 
-# Configure PHP memory settings
+# Configure PHP apache ini settings
 RUN rm -f /etc/php/7.1/apache2/php.ini
 COPY php.ini /etc/php/7.1/apache2/php.ini
+
+# Configure PHP cli settings
+RUN rm -f /etc/php/7.1/cli/php.ini
+COPY php.ini /etc/php/7.1/cli/php.ini
 
 # Environment variables to configure php
 ENV PHP_UPLOAD_MAX_FILESIZE 250M
