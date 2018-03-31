@@ -70,7 +70,7 @@ RUN mkdir -p /webdata
 
 # Configure PHP memory settings
 RUN rm -f /etc/php/7.1/apache2/php.ini
-RUN mv php.ini /etc/php/7.1/apache2/php.ini
+RUN mv /php.ini /etc/php/7.1/apache2/php.ini
 
 # Environment variables to configure php
 ENV PHP_UPLOAD_MAX_FILESIZE 250M
