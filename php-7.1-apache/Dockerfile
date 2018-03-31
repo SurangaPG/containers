@@ -70,6 +70,8 @@ RUN mkdir -p /webdata
 
 # Configure PHP memory settings
 RUN rm -f /etc/php/7.1/apache2/php.ini
+RUN pwd
+RUN ls -la
 RUN mv /php.ini /etc/php/7.1/apache2/php.ini
 
 # Environment variables to configure php
